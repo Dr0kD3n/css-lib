@@ -1,19 +1,49 @@
 import './sass/main.scss'
+import { tag } from 'postcss-selector-parser';
 
 const animationDuration = 300;
 
 $(document).ready(() => {
+    const checkInputs = () => {
+        $('input').map(e => {
+            const input = $('input').eq(e)[0];
+            $(input.nextElementSibling).css({
+                top: input.value ? '0' : '20px',
+                opacity: '1',
+                fontSize: input.value ? '12px' : 'unset',
+            })
+        })
+    }
+    checkInputs()
+    $('input').on('keyup', (e) => {
+        const input = $(e.target).eq(0)[0];
+        $(input.nextElementSibling).css({
+            top: input.value ? '0' : '20px',
+            opacity: '1',
+            fontSize: input.value ? '12px' : 'unset',
+        })
+    })
+    $('input').on('click', (e) => {
+        const input = $(e.target).eq(0)[0];
+        $(input.nextElementSibling).css({
+            top: '0',
+            opacity: '1',
+            fontSize: '12px',
+        })
+    })
+    $(document).on('click', (e) => {
+        const { className, tagName } = $(e).eq(0)[0].target;
+        if (tagName !== 'INPUT') checkInputs()
+    })
+
     const popup = (text, className, timeline = false, duration = 1000) => {
         const hash = btoa(Math.random()).replace(/=/g, '');
         let el = null;
         const content = `${text} <div class='time-line ${!timeline && 'hidden'}'></div>`
-        $('body').append(`
-        <div class='message ${hash} ${className}'>${content}
-        </div>
-        `)
+        $('body').append(`<div class='message ${hash} ${className}'>${content}</div>`)
             .promise()
+            .then(() => el = $(`.message.${hash}`))
             .then(() => {
-                el = $(`.message.${hash}`);
                 el.animate({
                     left: `-=${el.width() + 10}px`
                 }, 100)
@@ -23,18 +53,19 @@ $(document).ready(() => {
                     .eq(0)
                     .animate({ 'width': '0' }, duration, () =>
                         el.animate({
-                            marginTop: `-${el.height()}px`,
-                            opacity: '0'
-                        }, animationDuration)
+                            marginLeft: `${el.width() + 20}px`,
+                        }, animationDuration, () => {
+                            el.css('display', 'none')
+                        })
                     ))
-        el && el.on('click', () =>
+        $(`.message.${hash}`).eq(0).on('click', () => {
+            el = $(`.message.${hash}`);
             el.animate({
-                marginTop: `${el.height()}px`,
-                opacity: '0'
-            }, animationDuration))
+                marginLeft: `${el.width() + 20}px`,
+            }, animationDuration, () =>
+                    el.eq(0).css('display', 'none'))
+        })
     }
-    popup('123', 'success', true)
+    popup('123')
     popup('123', 'primary')
-    popup('123123123123132131123123112312312312313213112312311231231231231321311231231', 'warning')
-    popup('123', 'danger')
 })

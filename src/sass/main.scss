@@ -4,50 +4,122 @@
 @import "uservariables";
 @import "usermixins";
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
-
 .ui {
-    .hidden {
-        display: none;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .message {
+    flex-direction: column;
+    position: relative;
+    background: $bgColorPrimary;
+    color: $textColorPrimary;
+    cursor: pointer;
+    width: 200px;
+    top: 0;
+    right: 0;
+    left: 100%;
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    padding: $padding;
+    z-index: 15;
+    .time-line {
+      position: relative;
+      width: calc(100% + #{$padding * 2});
+      height: 5px;
+      background: red;
+      top: $padding;
+      right: $padding;
     }
-    .success {
-        background: $bgColorSuccess;
-        color: $textColorSuccess;
+  }
+
+  // ELEMENTS
+
+  // Form
+  form {
+    position: relative;
+    padding-top: 16px;
+    margin-bottom: 16px;
+    width: min-content;
+    label {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      font-weight: 300;
+      opacity: 0.5;
+      cursor: text;
+      transition: 0.2s ease all;
+      margin: 0;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 45%;
+        height: 2px;
+        width: 10px;
+        visibility: hidden;
+        background-color: $bgColorPrimary;
+        transition: 0.2s ease all;
+      }
     }
-    .primary {
-        background: $bgColorPrimary;
-        color: $textColorPrimary;
-    }
-    .warning {
-        background: $bgColorWarning;
-        color: $textColorWarning;
-    }
-    .danger {
-        background: $bgColorDanger;
-        color: $textColorDanger;
-    }
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .message {
-        flex-direction: column;
-        position: relative;
-        top: 0;
-        right: 0;
-        width: 200px;
-        cursor: pointer;
-        margin-top: 10px;
-        left: 100%;
-        overflow-wrap: break-word;
-        padding: 10px;
-        .time-line {
-            height: 5px;
+    input {
+      outline: 0;
+      position: relative;
+      z-index: 1;
+      border-radius: 0;
+      border-width: 0 0 1px;
+      border-bottom-color: rgba(0, 0, 0, 0.25);
+      height: auto;
+      padding: 3px 0 5px;
+     
+      &:focus {
+        box-shadow: none;
+        border-bottom-color: rgba(0, 0, 0, 0.12);
+        ~ label {
+          top: 0;
+          opacity: 1;
+          color: $bgColorPrimary;
+          font-size: 12px;
+          &:after {
+            visibility: visible;
             width: 100%;
-            background: red;
+            left: 0;
+          }
         }
+      }
     }
+  }
+
+  // COLORS
+  .success {
+    background: $bgColorSuccess;
+    color: $textColorSuccess;
+  }
+  .primary {
+    background: $bgColorPrimary;
+    color: $textColorPrimary;
+  }
+  .warning {
+    background: $bgColorWarning;
+    color: $textColorWarning;
+  }
+  .danger {
+    background: $bgColorDanger;
+    color: $textColorDanger;
+  }
+
+  // MODS
+  .hidden {
+    display: none;
+  }
 }
