@@ -1,7 +1,53 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900');
+@import "fonts";
 @import "variables";
+@import "mixins";
 @import "uservariables";
+@import "usermixins";
+* {
+    padding: 0;
+    margin: 0;
+}
 
-*{
-  color: $color;
+.ui {
+    .hidden {
+        display: none;
+    }
+    .success {
+        background: $bgColorSuccess;
+        color: $textColorSuccess;
+    }
+    .primary {
+        background: $bgColorPrimary;
+        color: $textColorPrimary;
+    }
+    .warning {
+        background: $bgColorWarning;
+        color: $textColorWarning;
+    }
+    .danger {
+        background: $bgColorDanger;
+        color: $textColorDanger;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .message {
+        flex-direction: column;
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 200px;
+        cursor: pointer;
+        margin-top: 10px;
+        left: 100%;
+        overflow-wrap: break-word;
+        padding: 10px;
+        .time-line {
+            height: 5px;
+            width: 100%;
+            background: red;
+        }
+    }
 }
