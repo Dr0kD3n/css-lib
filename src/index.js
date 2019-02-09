@@ -11,7 +11,31 @@ const checkInputs = () => {
         })
     })
 }
+
 $(document).ready(() => {
+    console.log()
+    const dropdown = () => {
+        $('.dropdown').each(e => {
+            const hash = btoa(Math.random()).replace(/=/g, '');
+            const el = $('.dropdown').eq(e);
+            const header = el.find('.header').eq(0);
+            header.append("<i class='fa fa-angle-down'></i>")
+            const content = el.find('.content').eq(0);
+            header.on('click', () => {
+                content.animate({
+                    height: 'toggle'
+                }, animationDuration)
+                header.find('.fa.rotated').eq(0)[0] ?
+                    $(header.find('.fa')).removeClass('rotated').addClass('rotate') :
+                    $(header.find('.fa')).removeClass('rotate').addClass('rotated')
+
+
+
+            })
+            el.addClass(hash);
+        })
+    }
+    dropdown()
     checkInputs()
     $('input').on('keyup', (e) => {
         const input = $(e.target).eq(0)[0];

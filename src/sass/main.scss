@@ -9,6 +9,26 @@
   margin: 0;
 }
 .ui {
+  .dropdown {
+    border: 1px solid black;
+    .header {
+      cursor: pointer;
+      i {
+        &.rotate {
+          animation: rotateDown $animation 1;
+          transform: rotate(0deg);
+        }
+        &.rotated {
+          animation: rotateUp $animation 1;
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .content {
+      overflow: hidden;
+    }
+  }
+
   .card {
     max-width: $card-width;
     overflow: hidden;
