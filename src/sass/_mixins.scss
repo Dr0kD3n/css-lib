@@ -31,21 +31,46 @@
 @mixin defaultColor {
   background: $bgColorDefault;
   color: $textColorDefault;
+  &.outline {
+    background: transparent;
+    color: unset;
+    border: 1px solid $bgColorDefault;
+  }
 }
 @mixin primaryColor {
   background: $bgColorPrimary;
   color: $textColorPrimary;
+  &.outline {
+    background: transparent;
+    color: darken($bgColorPrimary, 10%);
+    border: 1px solid $bgColorPrimary;
+  }
 }
 
 @mixin successColor {
   background: $bgColorSuccess;
   color: $textColorSuccess;
+  &.outline {
+    background: transparent;
+    color: darken($bgColorSuccess, 10%);
+    border: 1px solid $bgColorSuccess;
+  }
 }
 @mixin warningColor {
   background: $bgColorWarning;
   color: $textColorWarning;
+  &.outline {
+    background: transparent;
+    color: darken($bgColorWarning, 10%);
+    border: 1px solid $bgColorWarning;
+  }
 }
 @mixin dangerColor {
   background: $bgColorDanger;
   color: $textColorDanger;
+  &.outline {
+    background: transparent;
+    color: darken($bgColorDanger, 10%);
+    border: 1px solid $bgColorDanger;
+  }
 }
