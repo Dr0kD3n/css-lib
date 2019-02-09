@@ -9,6 +9,54 @@
   margin: 0;
 }
 .ui {
+  .card {
+    max-width: $card-width;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    box-shadow: $box-shadow;
+    @include center;
+    flex-direction: column;
+    & > .header {
+      height: $card-box-height;
+      overflow: hidden;
+      @include center;
+      img {
+        height: auto;
+        width: stretch;
+
+      }
+    }
+    & > .center {
+      margin-top: 10px;
+      @include center;
+      flex-direction: column;
+      margin-top: $padding;
+      .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: calc(#{$card-width} - #{$card-padding});
+        padding: 0 $padding;
+        img {
+          width: $card-user-img-width;
+          margin-right: $card-padding;
+        }
+        .user-info {
+          text-align: left;
+        }
+      }
+      .content{
+        text-align: left;
+        padding: 0 $padding;
+      }
+    }
+    & > .footer {
+      width: -webkit-fill-available;
+      margin-top: 10px;
+      @include center;
+    }
+  }
+
   table {
     &.divider {
       td,
@@ -24,17 +72,19 @@
     }
     tr {
       &:first-child {
-        background: $bgColorDefault;
+        background: $bg-color-dafault;
       }
     }
     th {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      color: $textColorDefault;
+      color: $text-color-dafault;
     }
   }
-
+  .font-size-8 {
+    font-size: $font-size-8;
+  }
   .font-size-7 {
     font-size: $font-size-7;
   }
@@ -110,7 +160,7 @@
       flex-direction: row;
     }
   }
-  .messageBox {
+  .message-box {
     position: fixed;
     top: 0;
     right: 0;
@@ -129,6 +179,9 @@
     @include nonClickable;
     &.rounded {
       @include rounded;
+    }
+    &.fluid {
+      width: stretch;
     }
   }
   ul {
@@ -168,6 +221,8 @@
   .button-group {
     display: flex;
     flex-direction: row;
+    width: -webkit-fill-available;
+    max-width: 500px;
     & > * {
       border-radius: 0;
       &:first-of-type {
@@ -191,6 +246,11 @@
           border-bottom-left-radius: $border-radius;
           border-bottom-right-radius: $border-radius;
         }
+      }
+    }
+    &.no-border {
+      & > * {
+        border-radius: 0;
       }
     }
   }
@@ -225,7 +285,7 @@
         height: 2px;
         width: 10px;
         visibility: hidden;
-        background-color: $bgColorPrimary;
+        background-color: $bg-color-primary;
         transition: 0.2s ease all;
       }
     }
@@ -245,7 +305,7 @@
         ~ label {
           top: 0;
           opacity: 1;
-          color: $bgColorPrimary;
+          color: $bg-color-primary;
           font-size: 12px;
           &:after {
             visibility: visible;

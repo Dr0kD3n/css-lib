@@ -2,23 +2,23 @@
 @import "uservariables";
 
 %primaryColor {
-  $bgColorPrimary: #898d7e;
-  $textColorPrimary: white;
+  $bg-color-primary: #898d7e;
+  $text-color-primary: white;
 }
 @mixin clickable {
   cursor: pointer;
   outline: 0;
   &:hover {
-    filter: brightness($hoverDarken);
+    filter: brightness($hover-darken);
   }
   &:active {
-    filter: brightness($activeDarken);
+    filter: brightness($active-darken);
   }
 }
 @mixin nonClickable {
   &:disabled {
     pointer-events: none;
-    filter: brightness($activeDarken);
+    filter: brightness($active-darken);
   }
 }
 
@@ -26,54 +26,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 @mixin rounded{
   border-radius: 15px;
 }
 
 @mixin defaultColor {
-  background: $bgColorDefault !important;
-  color: $textColorDefault !important;
+  background: $bg-color-dafault !important;
+  color: $text-color-dafault !important;
   &.outline {
     background: transparent;
     color: unset;
-    border: 1px solid $bgColorDefault;
+    border: 1px solid $bg-color-dafault;
   }
 }
 @mixin primaryColor {
-  background: $bgColorPrimary !important;
-  color: $textColorPrimary !important;
+  background: $bg-color-primary !important;
+  color: $text-color-primary !important;
   &.outline {
     background: transparent;
-    color: darken($bgColorPrimary, 10%);
-    border: 1px solid $bgColorPrimary;
+    color: darken($bg-color-primary, 10%);
+    border: 1px solid $bg-color-primary;
   }
 }
 
 @mixin successColor {
-  background: $bgColorSuccess !important;
-  color: $textColorSuccess !important;
+  background: $bg-color-success !important;
+  color: $text-color-success !important;
   &.outline {
     background: transparent;
-    color: darken($bgColorSuccess, 10%);
-    border: 1px solid $bgColorSuccess;
+    color: darken($bg-color-success, 10%);
+    border: 1px solid $bg-color-success;
   }
 }
 @mixin warningColor {
-  background: $bgColorWarning !important;
-  color: $textColorWarning !important;
+  background: $bg-color-warning !important;
+  color: $text-color-warning !important;
   &.outline {
     background: transparent;
-    color: darken($bgColorWarning, 10%);
-    border: 1px solid $bgColorWarning;
+    color: darken($bg-color-warning, 10%);
+    border: 1px solid $bg-color-warning;
   }
 }
 @mixin dangerColor {
-  background: $bgColorDanger!important; 
-  color: $textColorDanger !important;
+  background: $bg-color-danger!important; 
+  color: $text-color-danger !important;
   &.outline {
     background: transparent;
-    color: darken($bgColorDanger, 10%);
-    border: 1px solid $bgColorDanger;
+    color: darken($bg-color-danger, 10%);
+    border: 1px solid $bg-color-danger;
   }
 }

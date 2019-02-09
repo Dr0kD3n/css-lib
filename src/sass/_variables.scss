@@ -1,25 +1,25 @@
-$darkBg: #333;
-$darkText: #aaa;
+$dark-bg: #333;
+$dark-text: #aaa;
 $padding: 10px;
 $border-radius: 5px;
 
-$bgColorDefault: #898d7e;
-$textColorDefault: white;
+$bg-color-dafault: #898d7e;
+$text-color-dafault: white;
 
-$bgColorPrimary: #48d1cc;
-$textColorPrimary: white;
+$bg-color-primary: #48d1cc;
+$text-color-primary: white;
 
-$bgColorSuccess: #7fff00;
-$textColorSuccess: white;
+$bg-color-success: #7fff00;
+$text-color-success: white;
 
-$bgColorWarning: #ffae42;
-$textColorWarning: white;
+$bg-color-warning: #ffae42;
+$text-color-warning: white;
 
-$bgColorDanger: #d9534f;
-$textColorDanger: white;
+$bg-color-danger: #d9534f;
+$text-color-danger: white;
 
-$hoverDarken: 85%;
-$activeDarken: 70%;
+$hover-darken: 85%;
+$active-darken: 70%;
 
 $animation: 1s;
 $li-inline-margin-right: 10px;
@@ -33,3 +33,12 @@ $font-size-4: 15px;
 $font-size-3: 12px;
 $font-size-2: 9px;
 $font-size-1: 6px;
+
+$box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+$card-width: 200px;
+$card-box-width: 150px;
+$card-box-height: 150px;
+$card-padding: 10px;
+
+$card-user-img-width: 30px;

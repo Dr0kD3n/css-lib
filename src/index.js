@@ -39,8 +39,8 @@ $(document).ready(() => {
         const hash = btoa(Math.random()).replace(/=/g, '');
         let el = null;
         const content = `${text} <div class='time-line ${!timeline && 'hidden'}'></div>`;
-        $('.messageBox').eq(0)[0] || $('body').append('<div class="messageBox"></div>');
-        $('.messageBox').append(`<div class='message ${hash} ${className}'>${content}</div>`)
+        $('.message-box').eq(0)[0] || $('body').append('<div class="message-box"></div>');
+        $('.message-box').append(`<div class='message ${hash} ${className}'>${content}</div>`)
             .promise()
             .then(() => el = $(`.message.${hash}`))
             .then(() => el.animate({
