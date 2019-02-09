@@ -9,9 +9,32 @@
   margin: 0;
 }
 .ui {
-  .font-size-8 {
-    font-size: $font-size-8;
+  table {
+    &.divider {
+      td,
+      th {
+        border: 1px solid $border-color;
+      }
+    }
+    border-collapse: collapse;
+    width: auto;
+    td,
+    th {
+      padding: $padding;
+    }
+    tr {
+      &:first-child {
+        background: $bgColorDefault;
+      }
+    }
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      color: $textColorDefault;
+    }
   }
+
   .font-size-7 {
     font-size: $font-size-7;
   }

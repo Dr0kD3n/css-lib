@@ -32,8 +32,8 @@
 }
 
 @mixin defaultColor {
-  background: $bgColorDefault;
-  color: $textColorDefault;
+  background: $bgColorDefault !important;
+  color: $textColorDefault !important;
   &.outline {
     background: transparent;
     color: unset;
@@ -41,8 +41,8 @@
   }
 }
 @mixin primaryColor {
-  background: $bgColorPrimary;
-  color: $textColorPrimary;
+  background: $bgColorPrimary !important;
+  color: $textColorPrimary !important;
   &.outline {
     background: transparent;
     color: darken($bgColorPrimary, 10%);
@@ -51,8 +51,8 @@
 }
 
 @mixin successColor {
-  background: $bgColorSuccess;
-  color: $textColorSuccess;
+  background: $bgColorSuccess !important;
+  color: $textColorSuccess !important;
   &.outline {
     background: transparent;
     color: darken($bgColorSuccess, 10%);
@@ -60,8 +60,8 @@
   }
 }
 @mixin warningColor {
-  background: $bgColorWarning;
-  color: $textColorWarning;
+  background: $bgColorWarning !important;
+  color: $textColorWarning !important;
   &.outline {
     background: transparent;
     color: darken($bgColorWarning, 10%);
@@ -69,8 +69,8 @@
   }
 }
 @mixin dangerColor {
-  background: $bgColorDanger;
-  color: $textColorDanger;
+  background: $bgColorDanger!important; 
+  color: $textColorDanger !important;
   &.outline {
     background: transparent;
     color: darken($bgColorDanger, 10%);
