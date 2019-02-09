@@ -6,7 +6,7 @@ const checkInputs = () => {
         const input = $('input').eq(e)[0];
         $(input.nextElementSibling).css({
             top: input.value ? '0' : '20px',
-            opacity: '1',
+            opacity: input.value ? '1' : '0.5',
             fontSize: input.value ? '12px' : 'unset',
         })
     })
@@ -16,10 +16,11 @@ $(document).ready(() => {
     checkInputs()
     $('input').on('keyup', (e) => {
         const input = $(e.target).eq(0)[0];
+        const condition = input.value || $(e.target).eq(0).is(':focus');
         $(input.nextElementSibling).css({
-            top: input.value ? '0' : '20px',
-            opacity: '1',
-            fontSize: input.value ? '12px' : 'unset',
+            top: condition ? '0' : '20px',
+            opacity: condition ? '1' : '0.5',
+            fontSize: condition ? '12px' : 'unset',
         })
     })
     $('input').on('click', (e) => {
