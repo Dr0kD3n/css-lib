@@ -1,0 +1,45 @@
+@import "variables";
+@import "uservariables";
+
+%primaryColor {
+  $bgColorPrimary: #898d7e;
+  $textColorPrimary: white;
+}
+@mixin clickable{
+    cursor: pointer;
+    outline: 0;
+    &:hover{
+        filter: brightness($hoverDarken);
+    }
+    &:active{
+        filter: brightness($activeDarken);
+    }
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin defaultColor {
+  background: $bgColorDefault;
+  color: $textColorDefault;
+}
+@mixin primaryColor {
+  background: $bgColorPrimary;
+  color: $textColorPrimary;
+}
+
+@mixin successColor {
+  background: $bgColorSuccess;
+  color: $textColorSuccess;
+}
+@mixin warningColor {
+  background: $bgColorWarning;
+  color: $textColorWarning;
+}
+@mixin dangerColor {
+  background: $bgColorDanger;
+  color: $textColorDanger;
+}

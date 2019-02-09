@@ -8,19 +8,57 @@
   margin: 0;
 }
 .ui {
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .tag{
+    @include center;
+    padding-right: 10px;
+    margin-left: 5px;
+    @include defaultColor;
+    .connector{
+      position: relative;
+      right: 5px;
+      background: inherit;
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+    }
+
   }
+
+  .container {
+    @include center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .row {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  .messageBox {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  button,
+  .button {
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    @include defaultColor;
+    @include center;
+    @include clickable;
+  }
+
   .message {
     flex-direction: column;
     position: relative;
-    background: $bgColorPrimary;
-    color: $textColorPrimary;
+    @include defaultColor;
     cursor: pointer;
     width: 200px;
     top: 0;
+    opacity: 0.7;
     right: 0;
     left: 100%;
     margin-top: 10px;
@@ -81,7 +119,7 @@
       border-bottom-color: rgba(0, 0, 0, 0.25);
       height: auto;
       padding: 3px 0 5px;
-     
+
       &:focus {
         box-shadow: none;
         border-bottom-color: rgba(0, 0, 0, 0.12);
@@ -102,20 +140,16 @@
 
   // COLORS
   .success {
-    background: $bgColorSuccess;
-    color: $textColorSuccess;
+    @include successColor;
   }
   .primary {
-    background: $bgColorPrimary;
-    color: $textColorPrimary;
+    @include primaryColor;
   }
   .warning {
-    background: $bgColorWarning;
-    color: $textColorWarning;
+    @include warningColor;
   }
   .danger {
-    background: $bgColorDanger;
-    color: $textColorDanger;
+    @include dangerColor;
   }
 
   // MODS
