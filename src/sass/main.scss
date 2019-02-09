@@ -23,7 +23,6 @@
       img {
         height: auto;
         width: stretch;
-
       }
     }
     & > .center {
@@ -45,7 +44,7 @@
           text-align: left;
         }
       }
-      .content{
+      .content {
         text-align: left;
         padding: 0 $padding;
       }
@@ -232,6 +231,18 @@
       &:last-of-type {
         border-top-right-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
+      }
+    }
+    &.divider {
+      & > * {
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        &:first-of-type {
+          border-left: 0;
+        }
+        &:last-of-type {
+          border-right: 0;
+        }
       }
     }
     &.vertical {
