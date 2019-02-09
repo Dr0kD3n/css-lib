@@ -1,5 +1,6 @@
 @import "fonts";
 @import "variables";
+@import "keyframes";
 @import "mixins";
 @import "uservariables";
 @import "usermixins";
@@ -8,12 +9,12 @@
   margin: 0;
 }
 .ui {
-  .tag{
+  .tag {
     @include center;
     padding-right: 10px;
     margin-left: 5px;
     @include defaultColor;
-    .connector{
+    .connector {
       position: relative;
       right: 5px;
       background: inherit;
@@ -21,9 +22,37 @@
       width: 10px;
       border-radius: 50%;
     }
-
   }
-
+  .loader {
+    &.spinner {
+      background: none;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top: 2px solid white;
+      border-bottom: 2px solid white;
+      width: 15px;
+      height: 15px;
+      -webkit-animation: spin $animation linear infinite;
+      animation: spin $animation linear infinite;
+    }
+    &.progress {
+      background-color: #b3d4fc;
+      display: -webkit-flex;
+      display: flex;
+      height: 3px;
+      width: 100%;
+      margin: 0;
+      &:before {
+        height: 3px;
+        width: 100%;
+        margin: 0;
+        background-color: #3f51b5;
+        content: "";
+        -webkit-animation: running-progress $animation cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: running-progress $animation cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+    }
+  }
   .container {
     @include center;
     flex-direction: column;
