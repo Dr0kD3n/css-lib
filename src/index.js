@@ -82,7 +82,7 @@ $(document).ready(() => {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                paddingLeft: '10px';
+                paddingLeft: '10px',
             })
         });
     }
