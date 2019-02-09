@@ -79,6 +79,9 @@
     @include center;
     @include clickable;
     @include nonClickable;
+    &.rounded {
+      @include rounded;
+    }
   }
 
   .message {

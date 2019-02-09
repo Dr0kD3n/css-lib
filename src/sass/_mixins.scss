@@ -27,6 +27,9 @@
   align-items: center;
   justify-content: center;
 }
+@mixin rounded{
+  border-radius: 15px;
+}
 
 @mixin defaultColor {
   background: $bgColorDefault;
