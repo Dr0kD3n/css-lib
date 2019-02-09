@@ -12,7 +12,6 @@ const checkInputs = () => {
     })
 }
 $(document).ready(() => {
-
     checkInputs()
     $('input').on('keyup', (e) => {
         const input = $(e.target).eq(0)[0];

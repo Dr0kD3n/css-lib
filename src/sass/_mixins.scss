@@ -5,15 +5,21 @@
   $bgColorPrimary: #898d7e;
   $textColorPrimary: white;
 }
-@mixin clickable{
-    cursor: pointer;
-    outline: 0;
-    &:hover{
-        filter: brightness($hoverDarken);
-    }
-    &:active{
-        filter: brightness($activeDarken);
-    }
+@mixin clickable {
+  cursor: pointer;
+  outline: 0;
+  &:hover {
+    filter: brightness($hoverDarken);
+  }
+  &:active {
+    filter: brightness($activeDarken);
+  }
+}
+@mixin nonClickable {
+  &:disabled {
+    pointer-events: none;
+    filter: brightness($activeDarken);
+  }
 }
 
 @mixin center {

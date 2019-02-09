@@ -78,6 +78,7 @@
     @include defaultColor;
     @include center;
     @include clickable;
+    @include nonClickable;
   }
 
   .message {
