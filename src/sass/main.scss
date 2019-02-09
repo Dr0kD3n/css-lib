@@ -83,7 +83,16 @@
       @include rounded;
     }
   }
-
+  ul {
+    list-style-type: circle;
+    &.inline {
+      list-style-type: none;
+      & > li {
+        float: left;
+        margin-right: $li-inline-margin-right;
+      }
+    }
+  }
   .message {
     flex-direction: column;
     position: relative;
@@ -111,7 +120,6 @@
   .button-group {
     display: flex;
     flex-direction: row;
-
     & > * {
       border-radius: 0;
       &:first-of-type {
@@ -121,6 +129,20 @@
       &:last-of-type {
         border-top-right-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
+      }
+    }
+    &.vertical {
+      flex-direction: column;
+      & > * {
+        border-radius: 0;
+        &:first-of-type {
+          border-top-left-radius: $border-radius;
+          border-top-right-radius: $border-radius;
+        }
+        &:last-of-type {
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+        }
       }
     }
   }
