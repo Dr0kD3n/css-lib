@@ -19,6 +19,10 @@ $(document).ready(() => {
             const hash = btoa(Math.random()).replace(/=/g, '');
             const el = $('.dropdown').eq(e);
             const header = el.find('.header').eq(0);
+            if (el.hasClass('center')) {
+                console.log('123')
+                header.prepend('<div></div>');
+            }
             header.append("<i class='fa fa-angle-down'></i>")
             const content = el.find('.content').eq(0);
             header.on('click', () => {

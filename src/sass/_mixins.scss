@@ -78,3 +78,27 @@
     border: 1px solid $bg-color-danger;
   }
 }
+
+
+
+
+
+
+
+
+@mixin defaultBorderColor {
+  background: $bg-color-dafault !important;
+}
+@mixin primaryBorderColor {
+  background: $bg-color-primary !important;
+}
+
+@mixin successBorderColor {
+  background: $bg-color-success !important;
+}
+@mixin warningBorderColor {
+  background: $bg-color-warning !important;
+}
+@mixin dangerBorderColor {
+  background: $bg-color-danger!important; 
+}

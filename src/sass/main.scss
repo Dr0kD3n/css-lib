@@ -9,9 +9,14 @@
   margin: 0;
 }
 .ui {
+  color: #333;
   .dropdown {
-    border: 1px solid black;
+    width: 500px;
+    border: 1px solid inherit;
     .header {
+      padding: 10px;
+      justify-content: space-between;
+      display: flex;
       cursor: pointer;
       i {
         &.rotate {
@@ -26,6 +31,40 @@
     }
     .content {
       overflow: hidden;
+      text-align: left;
+      padding-bottom: 1px;
+      .dropdown-item {
+        background: white;
+        color: unset;
+        margin: 0 1px;
+        padding: 10px 8px;
+        border-left: 0;
+        border-right: 0;
+        color: black;
+      }
+    }
+    &.right {
+      * {
+        text-align: right;
+      }
+      .header {
+        flex-direction: row-reverse;
+      }
+    }
+    &.center {
+      & > * {
+        text-align: center;
+      }
+      .header {
+        padding-right: 0;
+        .title {
+          justify-content: space-between;
+        }
+        i {
+          position: relative;
+          right: 10px;
+        }
+      }
     }
   }
 
@@ -365,5 +404,16 @@
   // MODS
   .hidden {
     display: none;
+  }
+  .text-left {
+    text-align: left !important;
+  }
+
+  .text-center {
+    text-align: center !important;
+  }
+
+  .text-right {
+    text-align: right !important;
   }
 }
