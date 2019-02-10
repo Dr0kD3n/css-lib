@@ -10,6 +10,16 @@
 }
 .ui {
   color: #333;
+
+  .dropdown-group {
+    .content {
+      display: none;
+      &.active{
+        display: block;
+      }
+    }
+  }
+
   .dropdown {
     width: 500px;
     border: 1px solid inherit;
