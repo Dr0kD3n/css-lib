@@ -28,7 +28,7 @@
   justify-content: center;
   text-align: center;
 }
-@mixin rounded{
+@mixin rounded {
   border-radius: 15px;
 }
 
@@ -70,7 +70,7 @@
   }
 }
 @mixin dangerColor {
-  background: $bg-color-danger!important; 
+  background: $bg-color-danger !important;
   color: $text-color-danger !important;
   &.outline {
     background: transparent;
@@ -79,26 +79,19 @@
   }
 }
 
-
-
-
-
-
-
-
 @mixin defaultBorderColor {
-  background: $bg-color-dafault !important;
+  border: 1px solid $bg-color-dafault !important;
 }
 @mixin primaryBorderColor {
-  background: $bg-color-primary !important;
+  border: 1px solid $bg-color-primary !important;
 }
 
 @mixin successBorderColor {
-  background: $bg-color-success !important;
+  border: 1px solid $bg-color-success !important;
 }
 @mixin warningBorderColor {
-  background: $bg-color-warning !important;
+  border: 1px solid $bg-color-warning !important;
 }
 @mixin dangerBorderColor {
-  background: $bg-color-danger!important; 
+  border: 1px solid $bg-color-danger !important;
 }
