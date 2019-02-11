@@ -7,14 +7,33 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 .ui {
   color: #333;
-
+  .nav {
+    background: $bg-color-dafault;
+    width: 100%;
+    min-height: 20px;
+    padding: 0 $padding;
+    color: $text-color-dafault;
+   & > * {
+     display: flex;
+     flex-direction: row;
+   }
+    .left {
+      order: 1;
+    }
+    .right {
+      order: 2;
+    }
+    @include center;
+    justify-content: space-between;
+  }
   .dropdown-group {
     .content {
       display: none;
-      &.active{
+      &.active {
         display: block;
       }
     }
