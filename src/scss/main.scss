@@ -11,25 +11,7 @@
 }
 .ui {
   color: #333;
-  .nav {
-    background: $bg-color-dafault;
-    width: 100%;
-    min-height: 20px;
-    padding: 0 $padding;
-    color: $text-color-dafault;
-   & > * {
-     display: flex;
-     flex-direction: row;
-   }
-    .left {
-      order: 1;
-    }
-    .right {
-      order: 2;
-    }
-    @include center;
-    justify-content: space-between;
-  }
+
   .dropdown-group {
     .content {
       display: none;
@@ -40,7 +22,6 @@
   }
 
   .dropdown {
-    width: 500px;
     border: 1px solid inherit;
     .header {
       padding: 10px;
@@ -48,6 +29,7 @@
       display: flex;
       cursor: pointer;
       i {
+        margin: 0 0px 0 10px;
         &.rotate {
           animation: rotateDown $animation 1;
           transform: rotate(0deg);
@@ -62,6 +44,7 @@
       overflow: hidden;
       text-align: left;
       padding-bottom: 1px;
+      display: none;
       .dropdown-item {
         background: white;
         color: unset;
@@ -77,6 +60,9 @@
       }
       .header {
         flex-direction: row-reverse;
+        i {
+          margin: 0 10px 0 0;
+        }
       }
     }
     &.center {
@@ -84,13 +70,13 @@
         text-align: center;
       }
       .header {
-        padding-right: 0;
         .title {
           justify-content: space-between;
         }
-        i {
-          position: relative;
-          right: 10px;
+      }
+      .content {
+        .dropdown-item {
+          padding: 10px 30px 10px 10px;
         }
       }
     }
@@ -108,7 +94,44 @@
       @include dangerBorderColor;
     }
   }
-
+  .nav {
+    background: $bg-color-default;
+    width: 100%;
+    min-height: 20px;
+    padding: 0 $padding;
+    color: $text-color-default;
+    & > * {
+      display: flex;
+      flex-direction: row;
+    }
+    .left {
+      order: 1;
+    }
+    .right {
+      order: 2;
+      &.collapse {
+        .dropdown {
+          width: auto;
+          .content {
+            position: absolute;
+            right: 0;
+          }
+        }
+        @include tablet {
+          flex-direction: column;
+        }
+      }
+    }
+    .dropdown {
+      &.center {
+        .dropdown-item {
+          padding: 10px;
+        }
+      }
+    }
+    @include center;
+    justify-content: space-between;
+  }
   .card {
     max-width: $card-width;
     overflow: hidden;
@@ -171,14 +194,14 @@
     }
     tr {
       &:first-child {
-        background: $bg-color-dafault;
+        background: $bg-color-default;
       }
     }
     th {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      color: $text-color-dafault;
+      color: $text-color-default;
     }
   }
   .font-size-8 {

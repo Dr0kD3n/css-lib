@@ -3,8 +3,13 @@ $dark-text: #aaa;
 $padding: 10px;
 $border-radius: 5px;
 $default-color: white;
-$bg-color-dafault: #898d7e;
-$text-color-dafault: white;
+
+$desktop-width: 1025px;
+$tablet-width: 961px;
+$mobile-width: 320px;
+
+$bg-color-default: #898d7e;
+$text-color-default: white;
 
 $bg-color-primary: #48d1cc;
 $text-color-primary: white;
@@ -42,3 +47,9 @@ $card-box-height: 150px;
 $card-padding: 10px;
 
 $card-user-img-width: 30px;
+
+:export {
+  desktopWidth: $desktop-width;
+  tabletWidth: $tablet-width;
+  mobileWidth: $mobile-width;
+}
