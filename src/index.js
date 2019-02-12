@@ -30,7 +30,7 @@ const dropdown = () => {
                 !condition && content.slideUp(animationDuration);
             })
         } else {
-            header.append("<i class='fa fa-angle-down'></i>")
+            header.append(`<i class="fa fa-angle-down"></i>`)
             header.on('click', () => {
                 content.animate({
                     height: 'toggle'

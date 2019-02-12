@@ -11,6 +11,122 @@
 }
 .ui {
   color: #333;
+  .input {
+    .input-helper {
+      cursor: pointer;
+      position: relative;
+      display: inline-block;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+      }
+      &.radio {
+        padding-left: 15px;
+        &:before {
+          top: 1px;
+          left: 0;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: 1px solid $bg-color-default;
+        }
+      }
+      &.checkbox {
+        padding-left: 18px;
+        &:before {
+          top: 0;
+          left: 0;
+          width: 13px;
+          height: 13px;
+          border: 1px solid $bg-color-default;
+        }
+      }
+    }
+
+    input {
+      &[type="radio"],
+      &[type="checkbox"] {
+        display: none;
+        &:checked + label:before {
+          background: $bg-color-default;
+        }
+      }
+    }
+
+    &.success {
+      input {
+        &[type="radio"],
+        &[type="checkbox"] {
+          &:checked + label:before {
+            background: lighten($bg-color-success, 10%);
+          }
+        }
+      }
+      .input-helper {
+        &.radio:before {
+          border: 1px solid $bg-color-success;
+        }
+        &.checkbox:before {
+          border: 1px solid $bg-color-success;
+        }
+      }
+    }
+    &.warning {
+      input {
+        &[type="radio"],
+        &[type="checkbox"] {
+          &:checked + label:before {
+            background: lighten($bg-color-warning, 10%);
+          }
+        }
+      }
+      .input-helper {
+        &.radio:before {
+          border: 1px solid $bg-color-warning;
+        }
+        &.checkbox:before {
+          border: 1px solid $bg-color-warning;
+        }
+      }
+    }
+    &.danger {
+      input {
+        &[type="radio"],
+        &[type="checkbox"] {
+          &:checked + label:before {
+            background: lighten($bg-color-danger, $active-darken);
+          }
+        }
+      }
+      .input-helper {
+        &.radio:before {
+          border: 1px solid $bg-color-danger;
+        }
+        &.checkbox:before {
+          border: 1px solid $bg-color-danger;
+        }
+      }
+    }
+    &.primary {
+      input {
+        &[type="radio"],
+        &[type="checkbox"] {
+          &:checked + label:before {
+            background: lighten($bg-color-primary, $active-darken);
+          }
+        }
+      }
+      .input-helper {
+        &.radio:before {
+          border: 1px solid $bg-color-primary;
+        }
+        &.checkbox:before {
+          border: 1px solid $bg-color-primary;
+        }
+      }
+    }
+  }
 
   .dropdown-group {
     .content {
@@ -46,12 +162,10 @@
       padding-bottom: 1px;
       display: none;
       .dropdown-item {
-        background: white;
         color: unset;
         padding: 10px;
         border-left: 0;
         border-right: 0;
-        color: black;
       }
     }
     &.right {
@@ -114,7 +228,7 @@
           width: auto;
           .content {
             position: absolute;
-            right: 0;
+            // right: 0;
           }
         }
         @include tablet {
@@ -393,17 +507,12 @@
   // Form
   form {
     position: relative;
-    padding-top: 16px;
-    margin-bottom: 16px;
-    width: min-content;
     label {
       position: absolute;
       top: 20px;
       left: 0;
       bottom: 0;
       z-index: 2;
-      width: 100%;
-      font-weight: 300;
       opacity: 0.5;
       cursor: text;
       transition: 0.2s ease all;
@@ -452,16 +561,16 @@
   }
 
   // COLORS
-  .success {
+  .is-success {
     @include successColor;
   }
-  .primary {
+  .is-primary {
     @include primaryColor;
   }
-  .warning {
+  .is-warning {
     @include warningColor;
   }
-  .danger {
+  .is-danger {
     @include dangerColor;
   }
 
