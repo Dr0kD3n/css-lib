@@ -1,4 +1,4 @@
-$dark-bg: #333;
+$initial-color: #333;
 $dark-text: #aaa;
 $padding: 10px;
 $border-radius: 5px;
@@ -48,8 +48,12 @@ $card-padding: 10px;
 
 $card-user-img-width: 30px;
 
+$breadcrumb-color: blue;
+$breadcrumb-divider: ' > ';
+
 :export {
   desktopWidth: $desktop-width;
   tabletWidth: $tablet-width;
   mobileWidth: $mobile-width;
+  breadcrumbDivider: $breadcrumb-divider;
 }

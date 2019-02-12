@@ -1,6 +1,5 @@
 import './scss/main.scss'
 import variables from './scss/_variables.scss'
-
 const animationDuration = 500;
 const checkInputs = () => {
     $('input').map(e => {
@@ -72,6 +71,23 @@ const popup = (text, className, timeline = false, duration = 1000) => {
                 el.eq(0).css('display', 'none'))
     })
 }
+const breadcrumbs = () => {
+    const breadcrumbs = $('.breadcrumbs');
+    breadcrumbs.each(e => {
+        const isHorizontal = breadcrumbs.eq(e)[0].className.includes('horizontal');
+        const child = breadcrumbs.eq(e).children();
+        let margin = 0;
+        child.each(e => {
+            const el = child.eq(e);
+            const divider = variables.breadcrumbDivider[0].replace(/ /g, '&nbsp;');
+            e !== child.length - 1 &&
+                el.append(`<div class="divider">${variables.breadcrumbDivider.split(divider)[1]}</div>`);
+            isHorizontal && $(el[0]).css('marginLeft', `${margin}px`);
+            margin += el.width();
+        })
+    })
+
+}
 const dropdownGroup = () => {
     $('.dropdown-group').each(e => {
         const dropdownGroup = $('.dropdown-group').eq(e);
@@ -101,7 +117,6 @@ const dropdownGroup = () => {
     })
 }
 $(document).ready(() => {
-
     $('input').on('keyup', (e) => {
         const input = $(e.target).eq(0)[0];
         const condition = input.value || $(e.target).eq(0).is(':focus');
@@ -151,4 +166,5 @@ $(document).ready(() => {
     dropdown()
     dropdownGroup()
     checkInputs()
+    breadcrumbs()
 })

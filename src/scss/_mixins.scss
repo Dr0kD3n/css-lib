@@ -22,6 +22,11 @@
   }
 }
 
+@mixin inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 @mixin center {
   display: flex;
   align-items: center;

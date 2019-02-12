@@ -10,7 +10,23 @@
   box-sizing: border-box;
 }
 .ui {
-  color: #333;
+  color: $initial-color;
+  .breadcrumbs {
+    @include inline;
+    .breadcrumb {
+      cursor: pointer;
+      @include inline;
+      white-space: pre;
+      .divider {
+        cursor: text;
+        color: $breadcrumb-color;
+      }
+    }
+    &.horizontal {
+      align-items: unset;
+      flex-direction: column;
+    }
+  }
   .input {
     .input-helper {
       cursor: pointer;
