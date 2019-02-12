@@ -11,6 +11,93 @@
 }
 .ui {
   color: $initial-color;
+
+  .slider {
+    width: $slider-width;
+    height: $slider-height;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    .controls {
+      position: absolute;
+      width: $slider-width;
+      @include center;
+      .dots {
+        display: flex;
+        .dot {
+          width: $slider-dot-size;
+          height: $slider-dot-size;
+          border: 1px solid $bg-color-default;
+          border-radius: 50%;
+          margin-left: $slider-contols-dot-space;
+          cursor: pointer;
+          &.active {
+            background: $bg-color-default;
+          }
+        }
+      }
+      .angles {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .angle{
+          cursor: pointer;
+          padding: 10px;
+          flex: 1;
+          height: $angle-height;
+          @include center;
+          &.left{
+            justify-content: flex-start;
+          }
+          &.right{
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+    img {
+      transition: $animation;
+      min-width: 100%;
+      height: auto;
+    }
+    &.fluid {
+      width: 100%;
+    }
+    &.success {
+      .controls .dots .dot {
+        border: 1px solid $bg-color-success;
+        &.active {
+          background: $bg-color-success;
+        }
+      }
+    }
+    &.primary {
+      .controls .dots .dot {
+        border: 1px solid $bg-color-primary;
+        &.active {
+          background: $bg-color-primary;
+        }
+      }
+    }
+    &.warning {
+      .controls .dots .dot {
+        border: 1px solid $bg-color-warning;
+        &.active {
+          background: $bg-color-warning;
+        }
+      }
+    }
+    &.danger {
+      .controls .dots .dot {
+        border: 1px solid $bg-color-danger;
+        &.active {
+          background: $bg-color-danger;
+        }
+      }
+    }
+  }
+
   .breadcrumbs {
     @include inline;
     .breadcrumb {

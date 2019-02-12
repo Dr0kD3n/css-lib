@@ -26,7 +26,7 @@ $text-color-danger: white;
 $hover-darken: 85%;
 $active-darken: 70%;
 
-$animation: 1s;
+$animation: 1000ms;
 $li-inline-margin-right: 10px;
 $border-color: #ddd;
 
@@ -49,11 +49,25 @@ $card-padding: 10px;
 $card-user-img-width: 30px;
 
 $breadcrumb-color: blue;
-$breadcrumb-divider: ' > ';
+$breadcrumb-divider: " > ";
 
+$slider-width: 500px;
+$slider-height: 300px;
+$slider-dot-size: 10px;
+
+$slider-contols-dot-space: 3px;
+$slider-controls-bottom: 30px;
+
+$angle-height: 100%;
 :export {
+  angleHeight: $angle-height;
+  animation: $animation;
   desktopWidth: $desktop-width;
   tabletWidth: $tablet-width;
   mobileWidth: $mobile-width;
   breadcrumbDivider: $breadcrumb-divider;
+  sliderHeight: $slider-height;
+  sliderDotSize: $slider-dot-size;
+  sliderContolsDotSpace: $slider-contols-dot-space;
+  sliderControlsBottom: $slider-controls-bottom;
 }

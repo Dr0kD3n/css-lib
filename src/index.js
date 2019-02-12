@@ -1,6 +1,7 @@
 import './scss/main.scss'
 import variables from './scss/_variables.scss'
-const animationDuration = 500;
+let animataionDuration = variables.animation.includes('ms') && variables.animation.split('ms')[0];
+animataionDuration = animataionDuration || variables.animation.split('s')[0] * 1000;
 const checkInputs = () => {
     $('input').map(e => {
         const input = $('input').eq(e)[0];
@@ -71,6 +72,74 @@ const popup = (text, className, timeline = false, duration = 1000) => {
                 el.eq(0).css('display', 'none'))
     })
 }
+
+const slider = () => {
+    const slider = $('.slider');
+    let el;
+    slider.each(e => {
+        let id = 0;
+        const hash = `hash${btoa(Math.random()).replace(/=/g, '')}`;
+        el = slider.eq(e);
+        el.addClass(hash);
+        const withDots = el[0].className.includes('dots');
+        const angled = el[0].className.includes('angle');
+        const imgs = el.find('img');
+        withDots && !angled && el.append(`
+        <div class="controls">
+            <div class="dots"> 
+            </div>
+        </div>`);
+        !withDots && angled && el.append(`
+        <div class="controls">
+        <div class="angles"> 
+            <div class="angle left"><</div>
+            <div class="angle right">></div>
+        </div>`);
+        withDots && angled && el.append(`
+        <div class="controls">
+        <div class="angles"> 
+            <div class="angle left"><</div>
+            <div class="dots"></div>
+            <div class="angle right">></div>
+        </div>`);
+        const controls = el.find('.controls').eq(0);
+        withDots &&
+            controls.css({ 'marginTop': `calc(${variables.sliderHeight} - ${variables.sliderDotSize} - ${variables.sliderControlsBottom})` });
+        !withDots && angled &&
+            controls.css({ 'marginTop': `calc(${variables.sliderHeight}/2 - ${variables.sliderDotSize})` });
+        const dots = el.find('.dots');
+        withDots && imgs.each(e => dots.eq(0).append(`<div data-index='${e}' class="dot ${e === 0 && 'active'}"></div>`))
+        const dot = el.find('.dot');
+        const slideAction = (id) => {
+            dot.each(e => {
+                dot.eq(e)[0].className.includes('active') && $(dot.eq(e)[0]).removeClass('active');
+            })
+            dot.eq(id).addClass('active');
+            imgs.css({
+                transform: `translateX(-${id * 100}%)`
+            })
+        }
+        withDots && dot.on('click', (e) => {
+            const target = $(e.target);
+            id = target.attr('data-index')
+            slideAction(id);
+        })
+        const angle = el.find('.angle')
+
+        angled && angle.on('click', (e) => {
+            const target = $(e.target);
+            if (target.eq(0)[0].className.includes('left')) {
+                id === 0 ? id = imgs.length-1 : id -= 1;
+                slideAction(id);
+            };
+
+            if (target.eq(0)[0].className.includes('right')) {
+                id === imgs.length-1 ? id = 0 : id += 1;
+                slideAction(id);
+            };
+        })
+    })
+}
 const breadcrumbs = () => {
     const breadcrumbs = $('.breadcrumbs');
     breadcrumbs.each(e => {
@@ -81,8 +150,8 @@ const breadcrumbs = () => {
             const el = child.eq(e);
             const divider = variables.breadcrumbDivider[0].replace(/ /g, '&nbsp;');
             e !== child.length - 1 &&
-                el.append(`<div class="divider">${variables.breadcrumbDivider.split(divider)[1]}</div>`);
-            isHorizontal && $(el[0]).css('marginLeft', `${margin}px`);
+                el.append(`< div class="divider" > ${variables.breadcrumbDivider.split(divider)[1]}</div > `);
+            isHorizontal && $(el[0]).css('marginLeft', `${margin} px`);
             margin += el.width();
         })
     })
@@ -93,7 +162,7 @@ const dropdownGroup = () => {
         const dropdownGroup = $('.dropdown-group').eq(e);
         const dropdown = dropdownGroup.find('.dropdown');
         dropdown.each(e => {
-            const hash = `hash${btoa(Math.random()).replace(/=/g, '')}`;
+            const hash = `hash${btoa(Math.random()).replace(/=/g, '')} `;
             Object.values($(dropdown).eq(e)[0].classList)
                 .filter(e => e.includes('hash'))[0] ||
                 $(dropdown).eq(e).addClass(hash)
@@ -155,7 +224,7 @@ $(document).ready(() => {
                 height: parent.height(),
             })
             parent.css({
-                border: `1px solid ${el.css('background-color')}`,
+                border: `1px solid ${el.css('background-color')} `,
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -167,4 +236,5 @@ $(document).ready(() => {
     dropdownGroup()
     checkInputs()
     breadcrumbs()
+    slider()
 })
