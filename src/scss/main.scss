@@ -45,7 +45,6 @@
           cursor: pointer;
           padding: 10px $angle-padding;
           height: $angle-height;
-          transition: $animation;
           @include center;
           &.left{
             justify-content: flex-start;
@@ -63,7 +62,6 @@
       }
     }
     img {
-      transition: $animation;
       min-width: 100%;
       height: auto;
     }

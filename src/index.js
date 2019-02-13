@@ -111,11 +111,11 @@ const slider = () => {
             </div>
         </div>`);
         const controls = el.find('.controls').eq(0);
-        !withDots && !angled && 
+        !withDots && !angled &&
             setInterval(() => {
                 id === imgs.length - 1 ? id = 0 : id += 1;
                 slideAction(id);
-            }, 3000)
+            }, animataionDuration * 3)
         withDots &&
             controls.css({ 'marginTop': `calc(${variables.sliderHeight} - ${variables.sliderDotSize} - ${variables.sliderControlsBottom})` });
         !withDots && angled &&
@@ -126,18 +126,27 @@ const slider = () => {
         withDots && imgs.each(e => dots.eq(0).append(`<div data-index='${e}' class="dot ${e === 0 && 'active'}"></div>`))
         const dot = el.find('.dot');
         const slideAction = (id) => {
+            imgs.animate({
+                opacity: 0,
+            }, animataionDuration/2);
+            setTimeout(() => {
+                imgs.css({
+                    transform: `translateX(-${id * 100}%)`
+                }).animate({
+                    opacity: 1,
+                }, animataionDuration/2)
+            }, animataionDuration/2)
             dot.each(e => {
-                dot.eq(e)[0].className.includes('active') && $(dot.eq(e)[0]).removeClass('active');
+                dot.eq(e).hasClass('active') && dot.eq(e).removeClass('active');
             })
             dot.eq(id).addClass('active');
-            imgs.css({
-                transform: `translateX(-${id * 100}%)`
-            })
         }
         withDots && dot.on('click', (e) => {
             const target = $(e.target);
-            id = target.attr('data-index')
-            slideAction(id);
+            if (id !== target.attr('data-index')) {
+                id = target.attr('data-index');
+                slideAction(id);
+            }
         })
         const angle = el.find('.angle')
 
@@ -233,8 +242,6 @@ $(document).ready(() => {
             el.prepend('<div class="connector"></div>')
             const parent = $($(el).eq(0)[0].parentElement);
             $('.tag').eq(e).addClass(hash);
-            console.log(el.css('background-color'))
-            console.log()
             el.css({
                 height: parent.height(),
             })
