@@ -43,15 +43,21 @@
         align-items: center;
         .angle{
           cursor: pointer;
-          padding: 10px;
-          flex: 1;
+          padding: 10px $angle-padding;
           height: $angle-height;
+          transition: $animation;
           @include center;
           &.left{
             justify-content: flex-start;
           }
           &.right{
             justify-content: flex-end;
+          }
+          &:hover{
+            background: rgba(0,0,0,.5);
+          }
+          .fa{
+            font-size: $angle-size;
           }
         }
       }

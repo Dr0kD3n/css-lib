@@ -92,21 +92,36 @@ const slider = () => {
         !withDots && angled && el.append(`
         <div class="controls">
         <div class="angles"> 
-            <div class="angle left"><</div>
-            <div class="angle right">></div>
+        <div class="angle left">
+                <i class=" fa fa-angle-left"></i>                          
+            </div>
+            <div class="angle right">
+                <i class=" fa fa-angle-right"></i>                          
+            </div>
         </div>`);
         withDots && angled && el.append(`
         <div class="controls">
         <div class="angles"> 
-            <div class="angle left"><</div>
+            <div class="angle left">
+                <i class=" fa fa-angle-left"></i>                          
+            </div>
             <div class="dots"></div>
-            <div class="angle right">></div>
+            <div class="angle right">
+                <i class=" fa fa-angle-right"></i>                          
+            </div>
         </div>`);
         const controls = el.find('.controls').eq(0);
+        !withDots && !angled && 
+            setInterval(() => {
+                id === imgs.length - 1 ? id = 0 : id += 1;
+                slideAction(id);
+            }, 3000)
         withDots &&
             controls.css({ 'marginTop': `calc(${variables.sliderHeight} - ${variables.sliderDotSize} - ${variables.sliderControlsBottom})` });
         !withDots && angled &&
             controls.css({ 'marginTop': `calc(${variables.sliderHeight}/2 - ${variables.sliderDotSize})` });
+        withDots && angled &&
+            controls.css({ 'marginTop': `calc(${variables.sliderHeight} - ${variables.angleSize} - ${variables.anglePadding}* 2)` });
         const dots = el.find('.dots');
         withDots && imgs.each(e => dots.eq(0).append(`<div data-index='${e}' class="dot ${e === 0 && 'active'}"></div>`))
         const dot = el.find('.dot');
@@ -129,12 +144,12 @@ const slider = () => {
         angled && angle.on('click', (e) => {
             const target = $(e.target);
             if (target.eq(0)[0].className.includes('left')) {
-                id === 0 ? id = imgs.length-1 : id -= 1;
+                id === 0 ? id = imgs.length - 1 : id -= 1;
                 slideAction(id);
             };
 
             if (target.eq(0)[0].className.includes('right')) {
-                id === imgs.length-1 ? id = 0 : id += 1;
+                id === imgs.length - 1 ? id = 0 : id += 1;
                 slideAction(id);
             };
         })

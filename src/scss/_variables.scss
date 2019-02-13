@@ -59,7 +59,11 @@ $slider-contols-dot-space: 3px;
 $slider-controls-bottom: 30px;
 
 $angle-height: 100%;
+$angle-padding: 10px;
+$angle-size: 20px;
 :export {
+  angleSize: $angle-size;
+  anglePadding: $angle-padding;
   angleHeight: $angle-height;
   animation: $animation;
   desktopWidth: $desktop-width;
